@@ -35,3 +35,7 @@ td {
 .right-border {
   border-right: 1px solid black;
 }
+
+.blackout {
+  background: #000;
+}
