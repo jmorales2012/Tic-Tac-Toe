@@ -1,13 +1,23 @@
 var cpuMove;
 var symbols = ["X", "O"]/*[prompt("Human Symbol: "), prompt("CPU Symbol: ")]*/;
+var body = document.querySelector("body");
 var squares = document.querySelectorAll("td");
+var playerOneScoreDisplay = document.querySelector("#playerOneScore");
+var playerTwoScoreDisplay = document.querySelector("#playerTwoScore");
+
+var playerOneScore = Number(playerOneScoreDisplay.innerText);
+var playerTwoScore = Number(playerTwoScoreDisplay.innerText);
+
+// reset();
 
 
 // add event listener to squares
 squares.forEach(function(square) {
   square.addEventListener("click", function() {
-    humanMove(square, symbols[0]);
-    computerMove(symbols[1]);
+    if (!humanMove(square, symbols[0]))
+      computerMove(symbols[1]);
+    if (checkTie())
+      endGame();
   });
 });
 
@@ -38,6 +48,7 @@ function checkWin(symbol, board) {
     // we made it to end of row, found a winner
     if (winner) break;
   }
+
   return winner;
 }
 
@@ -56,8 +67,27 @@ function checkTie() {
 }
 
 
-function endGame() {
-  document.querySelector("body").classList.toggle("blackout");
+function endGame(winner) {
+  if (winner === "playerOne")
+    playerOneScoreDisplay.innerText = ++playerOneScore;
+  if (winner === "playerTwo")
+    playerTwoScoreDisplay.innerText = ++playerTwoScore;
+  body.addEventListener("click", remove, false);
+}
+
+
+function remove() {
+  // remove event listener added by endGame()
+  reset();
+  body.removeEventListener("click", remove, false);
+}
+
+
+function reset() {
+  for (var i = 0; i < squares.length; i++) {
+    squares[i].innerText = "";
+  }
+  var symbols = ["X", "O"]/*[prompt("Human Symbol: "), prompt("CPU Symbol: ")]*/;
 }
 
 
@@ -72,8 +102,10 @@ function humanMove(square, symbol) {
   }
 
   // test if human won using board copy
-  if (checkWin(symbol, board))
-    endGame();
+  if (checkWin(symbol, board)) {
+    endGame("playerOne");
+    return true;
+  }
 }
 
 
@@ -148,6 +180,8 @@ function computerMove(symbol) {
     board[index] = symbol;
   }
 
-  if (checkWin(symbol, board))
-    endGame();
+  if (checkWin(symbol, board)) {
+    endGame("playerTwo");
+    return true;
+  }
 }
