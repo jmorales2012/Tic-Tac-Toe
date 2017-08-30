@@ -1,0 +1,39 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #;
+}
+
+h1 {
+  text-align: center;
+}
+
+#playingBoard {
+  width: 50%;
+  margin: 75px auto;
+}
+
+table {
+  width: 100%;
+  height: 300px;
+  margin: 0 auto;
+  text-align: center;
+  border-collapse: collapse;
+}
+
+td {
+  width: 100px;
+  height: 100px;
+}
+
+.btm-border {
+  border-bottom: 1px solid black;
+}
+
+.right-border {
+  border-right: 1px solid black;
+}
