@@ -1,9 +1,10 @@
 var cpuMove;
-var symbols = ["X", "O"]/*[prompt("Human Symbol: "), prompt("CPU Symbol: ")]*/;
+var symbols = [prompt("Human Symbol: "), prompt("CPU Symbol: ")];
 var body = document.querySelector("body");
 var squares = document.querySelectorAll("td");
 var playerOneScoreDisplay = document.querySelector("#playerOneScore");
 var playerTwoScoreDisplay = document.querySelector("#playerTwoScore");
+var winnerDisplay = document.querySelector("#winner");
 
 var playerOneScore = Number(playerOneScoreDisplay.innerText);
 var playerTwoScore = Number(playerTwoScoreDisplay.innerText);
@@ -14,10 +15,13 @@ var playerTwoScore = Number(playerTwoScoreDisplay.innerText);
 // add event listener to squares
 squares.forEach(function(square) {
   square.addEventListener("click", function() {
+    winnerDisplay.innerText = "";
     if (!humanMove(square, symbols[0]))
       computerMove(symbols[1]);
-    if (checkTie())
+    if (checkTie()) {
+      winnerDisplay.innerText = "Tie Game!";
       endGame();
+    }
   });
 });
 
@@ -68,10 +72,14 @@ function checkTie() {
 
 
 function endGame(winner) {
-  if (winner === "playerOne")
+  if (winner === "playerOne") {
     playerOneScoreDisplay.innerText = ++playerOneScore;
-  if (winner === "playerTwo")
+    winnerDisplay.innerText = "Player One Wins!";
+  }
+  if (winner === "playerTwo") {
     playerTwoScoreDisplay.innerText = ++playerTwoScore;
+    winnerDisplay.innerText = "Player Two Wins!";
+  }
   body.addEventListener("click", remove, false);
 }
 
@@ -87,7 +95,7 @@ function reset() {
   for (var i = 0; i < squares.length; i++) {
     squares[i].innerText = "";
   }
-  var symbols = ["X", "O"]/*[prompt("Human Symbol: "), prompt("CPU Symbol: ")]*/;
+  // var symbols = [prompt("Human Symbol: "), prompt("CPU Symbol: ")];
 }
 
 

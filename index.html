@@ -3,29 +3,35 @@
 <head>
   <title>Tic-Tac-Toe</title>
   <link rel="stylesheet" type="text/css" href="style.css">
+  <link href="https://fonts.googleapis.com/css?family=Lato:300,400" rel="stylesheet">
 </head>
 <body>
 
   <h1>Tic-Tac-Toe</h1>
-  <div id="playingBoard">
-    <p>Player 1: <span id="playerOneScore">0</span></p>
-    <p>Player 2: <span id="playerTwoScore">0</span></p>
-    <table>
-      <tr>
-        <td class="btm-border right-border"></td>
-        <td class="btm-border right-border"></td>
-        <td class="btm-border"></td>
-      </tr>
-      <tr>
-        <td class="btm-border right-border"></td>
-        <td class="btm-border right-border"></td>
-        <td class="btm-border"></td>
-      </tr>
-      <tr>
-        <td class="right-border"></td>
-        <td class="right-border"></td>
-        <td></td>
-      </tr>
+  <div>
+    <div class="container">
+      <p class="playerScore">Player One: <span id="playerOneScore">0</span></p>
+      <p class="playerScore" id="winner"></p>
+      <p class="playerScore">Player Two: <span id="playerTwoScore">0</span></p>
+    </div>
+    <table id="playingBoard">
+      <tbody>
+        <tr>
+          <td class="btm-border right-border"></td>
+          <td class="btm-border right-border"></td>
+          <td class="btm-border"></td>
+        </tr>
+        <tr>
+          <td class="btm-border right-border"></td>
+          <td class="btm-border right-border"></td>
+          <td class="btm-border"></td>
+        </tr>
+        <tr>
+          <td class="right-border"></td>
+          <td class="right-border"></td>
+          <td></td>
+        </tr>
+      </tbody>
     </table>
   </div>
 
