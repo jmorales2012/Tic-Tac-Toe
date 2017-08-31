@@ -1,15 +1,15 @@
 var cpuMove;
-var symbols = [prompt("Human Symbol: "), prompt("CPU Symbol: ")];
 var body = document.querySelector("body");
 var squares = document.querySelectorAll("td");
+var winnerDisplay = document.querySelector("#winner");
+var symbols = ["X", "O"]/*[prompt("Human Symbol: "), prompt("CPU Symbol: ")]*/;
+
+
+// set score display and score variables
 var playerOneScoreDisplay = document.querySelector("#playerOneScore");
 var playerTwoScoreDisplay = document.querySelector("#playerTwoScore");
-var winnerDisplay = document.querySelector("#winner");
-
 var playerOneScore = Number(playerOneScoreDisplay.innerText);
 var playerTwoScore = Number(playerTwoScoreDisplay.innerText);
-
-// reset();
 
 
 // add event listener to squares
